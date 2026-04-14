@@ -1,0 +1,188 @@
+body {
+  margin: 0;
+  background: #000000;
+  color: #00ff88;
+  font-family: "Courier New", monospace;
+  overflow-x: hidden;
+}
+
+/* MATRIX BACKGROUND GRID */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#00ff8833 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: moveGrid 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes moveGrid {
+  from { transform: translateY(0); }
+  to { transform: translateY(30px); }
+}
+
+/* LAYOUT */
+.container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: #050b08;
+  border-right: 1px solid #00ff8855;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  text-shadow: 0 0 15px #00ff88;
+}
+
+/* MAIN */
+.main {
+  padding: 30px;
+}
+
+/* TERMINAL */
+.terminal {
+  background: #020605;
+  border: 1px solid #00ff8855;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #00ff8833;
+}
+
+/* INPUT */
+input {
+  width: 70%;
+  padding: 10px;
+  background: black;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+}
+
+input:focus {
+  box-shadow: 0 0 15px #00ff88;
+  outline: none;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 20px;
+  background: black;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 0 20px #00ff88;
+  transform: scale(1.05);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.card {
+  background: #020605;
+  border: 1px solid #00ff8833;
+  padding: 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ff8833;
+}
+
+/* RISK COLORS */
+.high { color: #ff3b3b; border-color: #ff3b3b; }
+.medium { color: #facc15; border-color: #facc15; }
+.low { color: #00ff88; border-color: #00ff88; }
+
+/* LOADING */
+.loading {
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.2; }
+}
+
+/* BOOT SCREEN */
+#boot {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00ff88;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 20px #00ff88;
+}
+
+.hidden {
+  display: none;
+}
+
+/* SCAN ANIMATION TEXT */
+.loading {
+  color: #00ff88;
+  animation: blink 0.7s infinite;
+  line-height: 1.6;
+}
+
+/* GLITCH TITLE EFFECT */
+h3 {
+  text-shadow: 0 0 10px #00ff88;
+}
+
+/* CARD IMPROVEMENT */
+.card {
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 255, 136, 0.1),
+    transparent
+  );
+  left: -100%;
+  animation: scanMove 2s infinite;
+}
+
+#logs {
+  height: 180px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+@keyframes scanMove {
+  100% {
+    left: 100%;
+  }
+}
